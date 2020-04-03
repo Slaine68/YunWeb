@@ -4,20 +4,13 @@
 ```
 npm install
 ```
-
 ### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
+### 自用备忘：格式化代码
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+shift+Alt+F
 ```
 
 ### Customize configuration
