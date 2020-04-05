@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
+import Const from './config/constConfig'
+import less from 'less'
 //登录
 import Login from './Login.vue'
 //battle组件
@@ -15,6 +17,8 @@ import IdeRes from './editPages/EditRes.vue';
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
+Vue.use(less)
+Vue.prototype.$myConst = Const;
 
 const routes=[
     {

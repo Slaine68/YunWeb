@@ -1,19 +1,24 @@
 <template>
   <div id="app">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1734100_w6n6iao6d9o.css" />
     <header class="bar-block">
       <router-link to="/battle">battle</router-link>
       <router-link to="/main">main</router-link>
       <router-link to="/edit">edit</router-link>
     </header>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
+
 
 <script>
 export default {};
 </script>
 
-<style>
+<style lang="less">
+
 html,
 body {
   height: 100%;
@@ -39,6 +44,22 @@ button:focus {
   border: none;
   background: none;
   outline: none;
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+input,
+button,
+select,
+textarea {
+  outline: none;
+}
+textarea {
+  resize: none;
 }
 </style>
 <style scoped>

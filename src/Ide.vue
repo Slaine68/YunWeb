@@ -3,58 +3,103 @@
     <nav :class="navState?'nav-open':'nav-close'">
       <router-link to="/edit/">
         <span>edit</span>
-        <li>E</li>
+        <li>
+          <i class="iconfont icon-edit"></i>
+        </li>
       </router-link>
       <router-link to="/edit/config">
         <span>config</span>
-        <li>C</li>
+        <li>
+          <i class="iconfont icon-setting"></i>
+        </li>
       </router-link>
       <router-link to="/edit/resource">
         <span>resource</span>
-        <li>R</li>
+        <li>
+          <i class="iconfont icon-collect"></i>
+        </li>
       </router-link>
-      <button id="change-size" @click="changeBarSize">
-        <transition name="width-change">
-          <span v-if="!navState" key="open">关</span>
-          <span v-else key="close">开</span>
-        </transition>
+
+      <button id="change-size" v-if="canChange" @click="changeBarSize">
+        <span v-if="!navState" key="open">
+          <i class="iconfont icon-arrow_right"></i>
+        </span>
+        <span v-if="navState" key="close">
+          <i class="iconfont icon-arrow_back"></i>
+        </span>
       </button>
     </nav>
     <div id="body-flex">
+      <keep-alive>
       <router-view></router-view>
+      </keep-alive>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   data: function() {
     return {
-      navState: true
+      navState: true,
+      width: document.documentElement.clientWidth,
+      canChange: true
     };
+  },
+  mounted() {
+    let wid = document.documentElement.clientWidth;
+    if (wid < this.$myConst.NAV_MIN_WIDTH || wid > this.$myConst.NAV_MAX_WIDTH) {
+      this.canChange = false;
+    }
+    const that = this;
+    window.addEventListener("resize", function() {
+      that.width = document.documentElement.clientWidth;
+    });
+  },
+  watch: {
+    width(news) {
+      if ((news < this.$myConst.NAV_MIN_WIDTH || news > this.$myConst.NAV_MAX_WIDTH) && this.canChange) {
+        this.canChange = false;
+      } else if (news > this.$myConst.NAV_MIN_WIDTH && news < this.$myConst.NAV_MAX_WIDTH && !this.canChange) {
+        this.canChange = true;
+      }
+    },
+    canChange(newC) {
+      if (!newC && this.width > this.$myConst.NAV_MAX_WIDTH) {
+        this.navState = true;
+      } else if (!newC && this.width < this.$myConst.NAV_MIN_WIDTH) {
+        this.navState = false;
+      }
+    }
   },
   methods: {
     changeBarSize: function() {
-      this.navState = !this.navState;
+      if (this.width > this.$myConst.NAV_MIN_WIDTH) {
+        this.navState = !this.navState;
+      }
     }
   }
 };
 </script>
 
-<style scoped>
-a.router-link-exact-active,
-a:hover {
-  color: crimson;
+<style scoped lang="less">
+a.router-link-exact-active{
+  color: @theme;
 }
-
+a.router-link-exact-active span,
+a:hover span{
+  border-bottom: @theme solid 1px;
+}
 #body-page {
   display: flex;
 }
 .nav-open {
-  width: 300px;
+  width: 20%;
+  max-width: 300px;
 }
 .nav-close {
-  width: 70px;
+  width: 60px;
 }
 .nav-close a span {
   display: none;
@@ -78,17 +123,13 @@ nav a {
 #body-flex {
   flex: 1;
 }
-#change-size span{
-	position: relative;
-	left: 0;
+
+#change-size span {
+  position: relative;
+  top: 0px;
+}
+#change-size span i {
+  font-size: 1em;
 }
 /* 动画 */
-.width-change-enter-active,
-.width-change-leave-active {
-  transition: all 0.8s;
-}
-.width-change-enter,.width-change-leave-to {
-  opacity: 0;
-  color: red;
-}
 </style>
