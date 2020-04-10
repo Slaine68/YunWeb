@@ -2,19 +2,19 @@
   <div id="body-page" class="full-body-content">
     <nav :class="navState?'nav-open':'nav-close'">
       <router-link to="/edit/">
-        <span>edit</span>
+        <span>编 辑</span>
         <li>
           <i class="iconfont icon-edit"></i>
         </li>
       </router-link>
       <router-link to="/edit/config">
-        <span>config</span>
+        <span>配 置</span>
         <li>
           <i class="iconfont icon-setting"></i>
         </li>
       </router-link>
       <router-link to="/edit/resource">
-        <span>resource</span>
+        <span>资 源</span>
         <li>
           <i class="iconfont icon-collect"></i>
         </li>
@@ -84,12 +84,8 @@ export default {
 </script>
 
 <style scoped lang="less">
-a.router-link-exact-active{
+a.router-link-exact-active,a:hover{
   color: @theme;
-}
-a.router-link-exact-active span,
-a:hover span{
-  border-bottom: @theme solid 1px;
 }
 #body-page {
   display: flex;
@@ -110,7 +106,7 @@ a:hover span{
 nav {
   box-sizing: border-box;
   height: 100%;
-  border-right: solid 1px rgba(0, 0, 0, 0.1);
+  border-right: solid 1px @gray-line;
   display: flex;
   flex-direction: column;
   text-align: center;

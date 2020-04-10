@@ -2,9 +2,9 @@
   <div id="app">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1734100_w6n6iao6d9o.css" />
     <header class="bar-block">
-      <router-link to="/battle">battle</router-link>
-      <router-link to="/main">main</router-link>
-      <router-link to="/edit">edit</router-link>
+      <router-link to="/battle">DEMO</router-link>
+      <router-link to="/main">游 戏</router-link>
+      <router-link to="/edit">编 辑</router-link>
     </header>
     <keep-alive>
       <router-view></router-view>
@@ -62,14 +62,14 @@ textarea {
   resize: none;
 }
 </style>
-<style scoped>
+<style scoped lang="less">
 a,
 a:link {
-  background: rgba(255, 255, 255, 0.7);
+  background: @white-mask7;
 }
 a.router-link-active,
 a:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: @gray2;
 }
 #app {
   height: 100%;
@@ -80,7 +80,7 @@ header {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  background: #f9f9f9;
+  background: @gray4;
 }
 header.bar-block a {
   padding: 20px;

@@ -1,1 +1,41 @@
 @theme:#00d1b7;
+@gray4:#f9f9f9;
+@gray3:#e1e1e1;
+@gray2:#ececec;
+@gray1:#a3a3a3;
+@white-mask7:rgba(255, 255, 255, 0.7);
+@black-mask1:#00000010;
+@black-mask2:#00000020;
+@black-mask3:#00000030;
+@black-mask6:#00000060;
+@black-mask7:#00000070;
+@gray-line:#e1e1e1;
+
+/*进度条美化*/
+textarea:hover::-webkit-scrollbar:hover {
+    // width: 22px;
+}
+::-webkit-scrollbar {
+    width: 16px;
+    height: 14px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+/*    border-radius: 999px;*/
+    border: 7px solid transparent;
+}
+
+::-webkit-scrollbar-track {
+    // box-shadow: 1px 1px 0px 4px rgba(39, 39, 39,0.1) inset;
+}
+
+::-webkit-scrollbar-thumb {
+    min-height: 20px;
+    background-clip: content-box;
+    box-shadow: 0 0 0 5px #e1e1e1 inset;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
