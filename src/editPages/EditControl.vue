@@ -49,7 +49,7 @@ export default {
   },
   mounted() {
     let wid = document.documentElement.clientWidth;
-    if (wid < this.$myConst.NAV_MIN_WIDTH || wid > this.$myConst.NAV_MAX_WIDTH) {
+    if (wid < this.$const.NAV_MIN_WIDTH || wid > this.$const.NAV_MAX_WIDTH) {
       this.canChange = false;
     }
     const that = this;
@@ -59,23 +59,23 @@ export default {
   },
   watch: {
     width(news) {
-      if ((news < this.$myConst.NAV_MIN_WIDTH || news > this.$myConst.NAV_MAX_WIDTH) && this.canChange) {
+      if ((news < this.$const.NAV_MIN_WIDTH || news > this.$const.NAV_MAX_WIDTH) && this.canChange) {
         this.canChange = false;
-      } else if (news > this.$myConst.NAV_MIN_WIDTH && news < this.$myConst.NAV_MAX_WIDTH && !this.canChange) {
+      } else if (news > this.$const.NAV_MIN_WIDTH && news < this.$const.NAV_MAX_WIDTH && !this.canChange) {
         this.canChange = true;
       }
     },
     canChange(newC) {
-      if (!newC && this.width > this.$myConst.NAV_MAX_WIDTH) {
+      if (!newC && this.width > this.$const.NAV_MAX_WIDTH) {
         this.navState = true;
-      } else if (!newC && this.width < this.$myConst.NAV_MIN_WIDTH) {
+      } else if (!newC && this.width < this.$const.NAV_MIN_WIDTH) {
         this.navState = false;
       }
     }
   },
   methods: {
     changeBarSize: function() {
-      if (this.width > this.$myConst.NAV_MIN_WIDTH) {
+      if (this.width > this.$const.NAV_MIN_WIDTH) {
         this.navState = !this.navState;
       }
     }

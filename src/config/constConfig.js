@@ -1,6 +1,8 @@
 'use strict'
 const NAV_MAX_WIDTH = 1440;
 const NAV_MIN_WIDTH = 800;
+
+const path='http://localhost/newphp/';
 // 资源:操作
 const ResourseOperator=Object.freeze({
     DELETE:Symbol('删除'),
@@ -14,6 +16,6 @@ const ResourseType=Object.freeze({
     TEXT:Symbol("文本")
 })
 export default{
-    NAV_MAX_WIDTH, NAV_MIN_WIDTH,
+    NAV_MAX_WIDTH, NAV_MIN_WIDTH,path,
     ResourseOperator,ResourseType
 }

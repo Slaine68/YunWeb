@@ -9,14 +9,14 @@
     />
     <div class="center-body">
       <div id="tools" style="padding-bottom:10px">
-        <span @click="openMode();modeType=that.$myConst.ResourseType.PICTRUE">
+        <span @click="openMode();modeType=that.$const.ResourseType.PICTRUE">
           <p>
             图
             <br />片
           </p>
           <i class="iconfont icon-beauty"></i>
         </span>
-        <span @click="openMode();modeType=that.$myConst.ResourseType.MUSIC">
+        <span @click="openMode();modeType=that.$const.ResourseType.MUSIC">
           <p>
             音
             <br />乐
@@ -36,11 +36,11 @@ export default {
     return {
       content: "",
       modeShow: false,
-      modeType: this.$myConst.ResourseType.PICTRUE,
+      modeType: this.$const.ResourseType.PICTRUE,
       modeOpers: [
-        this.$myConst.ResourseOperator.LOOK,
-        this.$myConst.ResourseOperator.CHOOSE,
-        this.$myConst.ResourseOperator.DELETE
+        this.$const.ResourseOperator.LOOK,
+        this.$const.ResourseOperator.CHOOSE,
+        this.$const.ResourseOperator.DELETE
       ],
       that: this
     };

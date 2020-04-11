@@ -44,6 +44,7 @@ button:focus {
   border: none;
   background: none;
   outline: none;
+  cursor: pointer;
 }
 .icon {
   width: 1em;
@@ -57,6 +58,10 @@ button,
 select,
 textarea {
   outline: none;
+}
+input{
+  border: none;
+  border-bottom: 1px solid @gray2;
 }
 textarea {
   resize: none;

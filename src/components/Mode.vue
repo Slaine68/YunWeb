@@ -7,11 +7,11 @@
         <li v-for="item in list" :key="item.id">
           <span>{{item.name}}</span>
           <span class="iconSpan"
-          v-if="operators.indexOf($myConst.ResourseOperator.DELETE)>-1">
+          v-if="operators.indexOf($const.ResourseOperator.DELETE)>-1">
             <i class="iconfont icon-delete" @click="deleteItem(id)"></i>
           </span>
           <span class="iconSpan"
-          v-if="operators.indexOf($myConst.ResourseOperator.CHOOSE)>-1">
+          v-if="operators.indexOf($const.ResourseOperator.CHOOSE)>-1">
             <i class="iconfont icon-chose" @click="$emit('choose',item.name)"></i>
           </span>
         </li>
@@ -55,7 +55,7 @@ export default {
       //原始数据
   },
   mounted(){
-      if(this.type==this.$myConst.ResourseType.MUSIC){
+      if(this.type==this.$const.ResourseType.MUSIC){
           this.list=this.musicList;
       }
   },
@@ -94,7 +94,7 @@ export default {
   border-radius: 2px;
   margin: auto;
   box-sizing: content-box;
-  border: 2px solid @black-mask6;
+  box-shadow: @shadow;
 }
 .iconSpan {
   float: right;
