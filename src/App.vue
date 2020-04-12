@@ -2,9 +2,8 @@
   <div id="app">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1734100_w6n6iao6d9o.css" />
     <header class="bar-block">
-      <router-link to="/battle">DEMO</router-link>
-      <router-link to="/main">游 戏</router-link>
-      <router-link to="/edit">编 辑</router-link>
+      <router-link to="/home">首 页</router-link>
+      <router-link to="/mine">我 的</router-link>
     </header>
     <keep-alive>
       <router-view></router-view>
