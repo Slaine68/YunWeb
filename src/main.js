@@ -5,6 +5,7 @@ import Const from './config/constConfig'
 import less from 'less'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import global from '@/config/global.js'
 //跨域session会刷新的问题
 axios.defaults.withCredentials = true;
 //登录组件
@@ -26,6 +27,7 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(less)
 Vue.use(VueAxios, axios)
+Vue.use(global)
 Vue.prototype.$axios = axios;
 Vue.prototype.$const = Const;
 
@@ -47,11 +49,11 @@ const routes = [
         component: GameBody,
     },
     {
-        path: '/edit',
+        path: '/edit/:code',
         component: Ide,
         children: [
             {
-                path: '',
+                path: 'main',
                 component: IdeMain
             }, {
                 path: 'config',

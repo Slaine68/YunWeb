@@ -1,19 +1,19 @@
 <template>
   <div id="body-page" class="full-body-content">
     <nav :class="navState?'nav-open':'nav-close'">
-      <router-link to="/edit/">
+      <router-link to="main">
         <span>编 辑</span>
         <li>
           <i class="iconfont icon-edit"></i>
         </li>
       </router-link>
-      <router-link to="/edit/config">
+      <router-link to="config">
         <span>配 置</span>
         <li>
           <i class="iconfont icon-setting"></i>
         </li>
       </router-link>
-      <router-link to="/edit/resource">
+      <router-link to="resource">
         <span>资 源</span>
         <li>
           <i class="iconfont icon-collect"></i>
@@ -29,11 +29,12 @@
         </span>
       </button>
     </nav>
-    <div id="body-flex">
-      <keep-alive>
-      <router-view></router-view>
-      </keep-alive>
-    </div>
+    <keep-alive>
+      <div class="main-block">
+<router-view class="center-body"></router-view>
+      </div>
+    
+    </keep-alive>
   </div>
 </template>
 
@@ -84,6 +85,16 @@ export default {
 </script>
 
 <style scoped lang="less">
+.main-block {
+  display: flex;
+  flex:1;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2em;
+  box-sizing: border-box;
+}
 a.router-link-exact-active,a:hover{
   color: @theme;
 }
@@ -127,5 +138,12 @@ nav a {
 #change-size span i {
   font-size: 1em;
 }
-/* 动画 */
+.center-body {
+  width: 90%;
+  max-width: 700px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
 </style>

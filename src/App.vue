@@ -4,16 +4,28 @@
     <header class="bar-block">
       <router-link to="/home">首 页</router-link>
       <router-link to="/mine">我 的</router-link>
+      <span @click="exit">退出</span>
     </header>
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
+    <router-view></router-view>
   </div>
 </template>
 
 
 <script>
-export default {};
+export default {
+  methods:{
+    exit(){
+      let that = this;
+          this.$axios
+      .get(this.$const.path + "exit.php")
+      .then(function(res) {
+        if (res.data.status) {
+          that.$router.push(`/login`);
+        }
+      });
+    }
+  }
+};
 </script>
 
 <style lang="less">

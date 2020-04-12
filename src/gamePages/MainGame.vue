@@ -1,12 +1,14 @@
 <template>
   <div id="gameBack">
     <div id="gameBody" :style="{width:width+'px',height:height+'px'}">
+      <Game></Game>
       <span v-html="gameConfig"></span>
     </div>
   </div>
 </template>
 
 <script>
+import Game from './Game.vue'
 export default {
   data() {
     return {
@@ -64,6 +66,20 @@ export default {
         this.height = w / b;
       }
     }
+  },
+  beforeRouteLeave(to, from, next) {
+    //警告
+    const answer = window.confirm(
+      "是否离开？!"
+    );
+    if (answer) {
+      next();
+    } else {
+      next(false);
+    }
+  },
+  components:{
+    Game
   }
 };
 </script>
@@ -82,5 +98,12 @@ export default {
   // 高宽响应
   background: white;
   box-shadow: @shadow;
+}
+</style>
+<style lang="less">
+.fullGameScreen{
+  height: 100%;
+  width:100%;
+  
 }
 </style>
