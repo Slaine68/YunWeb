@@ -35,9 +35,6 @@ export default {
             that.state = res.data.status;
             that.res = res.data.tip;
             //触发跳转
-            //如果已登陆，转跳到个人界面
-            //进入主界面，所有内容列表。
-            //创建、编辑游戏可以在“我的”里查看。
           });
       }
     },
@@ -53,24 +50,10 @@ export default {
       return flag;
     }
   },
-  created() {
-    let that = this;
-    this.$axios
-      .post(this.$const.path + "sure.php", this.user)
-      .then(function(res) {
-        that.state = res.data.status;
-        that.res = res.data.tip;
-        //如果已登陆，转跳到个人界面
-        // if (that.state) {
-        //   console.log("转跳！");
-        //   that.$router.push("main");
-        // }
-      });
-  },
   watch:{
     state(news){
       if(news){
-        this.$router.push("main");
+        this.$router.push("/mine");
       }
     }
   }

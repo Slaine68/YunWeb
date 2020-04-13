@@ -4,7 +4,7 @@
     <header class="bar-block">
       <router-link to="/home">首 页</router-link>
       <router-link to="/mine">我 的</router-link>
-      <span @click="exit">退出</span>
+      <span @click="exit" v-if="$store.state.usercode!=''">退出</span>
     </header>
     <router-view></router-view>
   </div>
@@ -15,12 +15,12 @@
 export default {
   methods:{
     exit(){
-      let that = this;
           this.$axios
       .get(this.$const.path + "exit.php")
-      .then(function(res) {
+      .then((res)=> {
         if (res.data.status) {
-          that.$router.push(`/login`);
+          this.$store.commit('login', "");
+          this.$router.push(`/login`);
         }
       });
     }

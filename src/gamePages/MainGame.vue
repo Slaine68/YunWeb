@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       width: 0,
-      heigh: 0,
+      height: 0,
       gameConfig: ""
     };
   },
@@ -43,13 +43,13 @@ export default {
         }
       });
     //绑监听函数
-    that.changeWH(
+    this.changeWH(
       document.documentElement.clientWidth,
       document.documentElement.clientHeight,
       1.77
     );
-    window.addEventListener("resize", function() {
-      that.changeWH(
+    window.addEventListener("resize", ()=>{
+      this.changeWH(
         document.documentElement.clientWidth,
         document.documentElement.clientHeight,
         1.77

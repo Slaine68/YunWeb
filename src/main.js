@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import Vuex from 'vuex';
+import store from './config/vuex.js'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import Const from './config/constConfig'
@@ -28,6 +30,7 @@ Vue.use(VueRouter)
 Vue.use(less)
 Vue.use(VueAxios, axios)
 Vue.use(global)
+Vue.use(Vuex)
 Vue.prototype.$axios = axios;
 Vue.prototype.$const = Const;
 
@@ -38,6 +41,9 @@ const routes = [
     },
     {
         path: '/mine',
+        meta: {
+            requireLogin: true
+        },
         component: Mine
     },
     {
@@ -51,6 +57,9 @@ const routes = [
     {
         path: '/edit/:code',
         component: Ide,
+        meta: {
+            requireLogin: true
+        },
         children: [
             {
                 path: 'main',
@@ -70,8 +79,32 @@ const router = new VueRouter({
     routes
 }
 )
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requireLogin)) {
+        let vue = router.app.$options;
+        if (vue.store.state.usercode == "") {
+            //未存在用户，送去确认。
+            vue.axios
+                .post(vue.Const.path + "sure.php")
+                .then((res) => {
+                    if (res.data.status===1) {
+                        //已登陆
+                        vue.store.commit('login', res.data.tip);
+                    }
+                    else {
+                        //真的未登陆
+                        router.push({ path: '/login' });
+                    }
+                });
+        }
+    }
+    next();
+})
 
 new Vue({
     render: h => h(App),
-    router
+    router,
+    store,
+    axios,
+    Const
 }).$mount('#app')
