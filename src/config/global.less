@@ -19,6 +19,68 @@
 @shadow:10px 10px 20px 10px rgba(0, 0, 0, 0.14);
 @shadow-btn:2px 2px 6px 0px rgba(0, 0, 0, 0.15);
 
+.transform(@value){
+    -webkit-transform: @value;
+    -ms-transform: @value;
+    transform: @value;
+}
+
+/*
+    flex布局有关
+*/
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+.flex-center{
+    justify-content: center;
+    align-items: center;
+}
+.flex-row-center{
+    .flex-row;
+    .flex-center;
+}
+.flex-col-center{
+    .flex-col;
+    .flex-center;
+}
+/*布局有关*/
+/*内容居中 两边留白布局*/
+.content-middle{
+    height: 100%;
+    width: 90%;
+    max-width: 60rem;
+    margin: auto;
+}
+/*头-身-脚布局*/
+.header-body-footer{
+    height: 100%;
+    .flex-col;
+    .body{
+        flex: 1;
+    }
+}
+
+//阴影
+.shadow {
+    box-shadow: @shadow-btn;
+}
+
+/*递归样式*/
+/*最大宽度*/
+
+.max-width(9);
+    
+.max-width(@n, @i: 1) when (@i =< @n) {
+  .max-width-@{i} {
+    max-width: @i*10rem !important;
+  }
+  .max-width(@n, (@i + 1));
+}
 
 /*进度条美化*/
 // textarea:hover::-webkit-scrollbar:hover {

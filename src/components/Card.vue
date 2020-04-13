@@ -32,11 +32,5 @@ export default {
   width: 200px;
   height: 100px;
 }
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
-.shadow {
-  box-shadow: @shadow-btn;
-}
+
 </style>
