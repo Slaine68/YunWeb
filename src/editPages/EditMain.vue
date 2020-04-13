@@ -212,12 +212,6 @@ textarea {
 #tools span:hover i {
   left: 0em;
 }
-#tools span:hover {
-  // color: @theme;
-  // border-bottom: @theme 1px solid;
-  // border-top: @theme 1px solid;
-}
-
 body {
   display: flex;
   flex-direction: column;
