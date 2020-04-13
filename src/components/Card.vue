@@ -1,7 +1,7 @@
 <template>
   <div class="card flex-row shadow">
     <!-- 传入对象、操作 -->
-    <div class="card-item">
+    <div class="card-item height-full">
       <slot>Shwo item here</slot>
     </div>
     <div class="card-operator">

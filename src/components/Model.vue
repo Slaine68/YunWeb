@@ -2,13 +2,13 @@
   <!-- 模态框，可以有个返回值 -->
   <div id="mainMode">
     <div id="mask" @click="$emit('close')"></div>
-    <div id="block" :style="{maxHeight:heights,maxWidth:widths}">
+    <div id="block" :style="{maxHeight:heights,maxWidth:widths}" class="header-body-footer">
       <header>
         <slot name="header"></slot>
       </header>
-      <body>
+      <div class="body flex-row-wrap">
         <slot></slot>
-      </body>
+      </div>
       <footer>
         <slot name="footer"></slot>
       </footer>
@@ -71,10 +71,6 @@ export default {
   box-shadow: @shadow;
   display: flex;
   flex-direction: column;
-}
-#block body{
-  flex:1;
-  overflow: scroll;
 }
 .iconSpan {
   float: right;

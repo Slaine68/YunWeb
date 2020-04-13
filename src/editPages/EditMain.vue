@@ -1,16 +1,13 @@
 <template>
 <div>
-  <!-- <Mode
-    v-if="mode.modeShow"
-    @choose="changeVal"
-    @close="closeMode"
-    :operators="mode.modeOpers"
-    :type="mode.modeType"
-  />-->
+  <!-- 模态框 -->
   <Model v-if="mode.modeShow" @close="closeMode" @submit="changeVal" heights="60em" widths="50em">
     <template v-slot:header>请填写游戏名</template>
-    <ImgShower :data="res.img" :type="'img'"></ImgShower>
+    <Card v-for="item in res.img" :key="item.id">
+      <CardImg :name="item.file_name.split('.')[0]" :src="$const.path+item.small_path"></CardImg>
+    </Card>
   </Model>
+
   <header>
     <div>
       <div v-if="gameChaps.length==0">您还没有章节，请新增章节</div>

@@ -1,6 +1,7 @@
 <template>
-  <div>
-      <img :src="require('@/assets'+src)" :alt="name"/>
+  <div class="height-full">
+      <!-- <img :src="require('@/assets'+src)" :alt="name"/> -->
+      <img class="height-full" :src="src" :alt="name"/>
       <span>{{name}}</span>
   </div>
 </template>

@@ -48,7 +48,17 @@
     .flex-col;
     .flex-center;
 }
-/*布局有关*/
+.flex-row-wrap{
+    .flex-row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.flex-item-1{
+    flex:1 0
+}
+/*
+    布局有关
+*/
 /*内容居中 两边留白布局*/
 .content-middle{
     height: 100%;
@@ -62,12 +72,17 @@
     .flex-col;
     .body{
         flex: 1;
+        overflow: scroll;
     }
 }
 
 //阴影
 .shadow {
     box-shadow: @shadow-btn;
+}
+
+.height-full{
+    height: 100%;
 }
 
 /*递归样式*/
