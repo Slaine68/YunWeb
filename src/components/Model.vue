@@ -2,11 +2,11 @@
   <!-- 模态框，可以有个返回值 -->
   <div id="mainMode">
     <div id="mask" @click="$emit('close')"></div>
-    <div id="block" :style="{maxHeight:heights,maxWidth:widths}" class="header-body-footer">
+    <div id="block" :style="{maxHeight:heights,maxWidth:widths}" class="header-body-footer padding2">
       <header>
         <slot name="header"></slot>
       </header>
-      <div class="body flex-row-wrap">
+      <div class="body flex-row-wrap padding-top2">
         <slot></slot>
       </div>
       <footer>
@@ -40,37 +40,24 @@ export default {
 </script>
 
 <style scoped lang="less">
-#mainMode {
-  position: absolute;
-  top: 0px;
-  left: 0;
-  width: 100%;
-  height: 100%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+#mainMode {
+  .absolute;
+  .full-screen;
+  .flex-row-center;
 }
 #mask {
-  position: absolute;
-  top: 0px;
+  .absolute;
+  .full-screen;
   background: rgba(0, 0, 0, 0.5);
-  display: block;
-  width: 100%;
-  height: 100%;
 }
 #block {
   background: white;
-  width: 90%;
-  max-width: 70rem;
-  height: 60%;
-  z-index: 10;
-  max-height: 40rem;
   border-radius: 2px;
-  box-sizing: content-box;
-  box-shadow: @shadow;
-  display: flex;
-  flex-direction: column;
+  .float-center-block;
+  .shadow-btn;
+  .flex-col;
 }
 .iconSpan {
   float: right;
@@ -91,5 +78,15 @@ ul li {
 }
 ul li:hover {
   background: @black-mask1;
+}
+.header-body-footer{
+  header{
+    .bottom-gray-line;
+    font-size: 1.1rem;
+    line-height: 3rem;
+  }
+  footer{
+    .top-gray-line;
+  }
 }
 </style>

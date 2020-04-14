@@ -30,10 +30,11 @@
       heights="20em"
       widths="20em"
     >
-      <template v-slot:header>请填写游戏名</template>
+      <template v-slot:header>新建游戏</template>
       <input type="text" v-model="newGameVal" />
       <template v-slot:footer>
-        <button @click="gotoNew">提交</button>
+        <OpaButton @click.native="gotoNew">提交</OpaButton>
+        <OpaButton @click.native="modeShow= false">取消</OpaButton>
       </template>
     </Model>
   </div>

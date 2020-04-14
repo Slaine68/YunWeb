@@ -1,11 +1,8 @@
 <template>
-<div>
+<div class="header-body-footer">
   <!-- 模态框 -->
   <Model v-if="mode.modeShow" @close="closeMode" @submit="changeVal" heights="60em" widths="50em">
-    <template v-slot:header>请填写游戏名</template>
-    <Card v-for="item in res.img" :key="item.id">
-      <CardImg :name="item.file_name.split('.')[0]" :src="$const.path+item.small_path"></CardImg>
-    </Card>
+    <Card v-for="item in res.img" :key="item.id" :operators="mode.modeOpers" :item="item" class="margin05" @choose="choose"></Card>
   </Model>
 
   <header>
@@ -22,9 +19,9 @@
       <ul>
         <h3
           v-for="chap in gameChaps"
-          :key="chap.file_path"
-          @click="getFile(chap.file_path)"
-        >{{chap.file_name}}</h3>
+          :key="chap.path"
+          @click="getFile(chap.path)"
+        >{{chap.name}}</h3>
       </ul>
     </div>
   </header>
@@ -45,7 +42,7 @@
         <i class="iconfont icon-visible"></i>
       </span>
     </div>
-    <textarea spellcheck="false" v-model="txt.content"></textarea>
+    <textarea spellcheck="false" v-model="txt.content" class="body"></textarea>
     <CommonButton v-show="txt.state" @click.native="saveFile">保存</CommonButton>
   </body>
 </div>
@@ -142,6 +139,11 @@ export default {
         .catch(function() {
           alert("存档失败");
         });
+    },
+    //修改内容
+    choose(val){
+      this.txt.content+=val;
+      this.closeMode();
     }
   },
   mounted() {
@@ -160,13 +162,12 @@ export default {
         }
       });
   }
+  
 };
 </script>
 <style scoped lang="less">
 textarea {
   box-shadow: 0px 0px -5px @gray-line;
-  overflow-y: scroll;
-  overflow-x: hidden;
   border: 1px solid @gray-line;
   border-right: 1px solid transparent;
   border-left: 1px solid transparent;
@@ -175,7 +176,6 @@ textarea {
   width: 100%;
   box-sizing: border-box;
   font-size: 1rem;
-  flex: 1;
   line-height: 1.5rem;
 }
 #tools {
@@ -212,5 +212,8 @@ textarea {
 body {
   display: flex;
   flex-direction: column;
+}
+.margin05{
+  margin:0.5em;
 }
 </style>

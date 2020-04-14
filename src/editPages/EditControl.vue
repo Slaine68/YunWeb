@@ -31,15 +31,13 @@
     </nav>
     <keep-alive>
       <div class="main-block">
-<router-view class="center-body"></router-view>
+        <router-view class="content-middle"></router-view>
       </div>
-    
     </keep-alive>
   </div>
 </template>
 
 <script>
-
 export default {
   data: function() {
     return {
@@ -60,9 +58,17 @@ export default {
   },
   watch: {
     width(news) {
-      if ((news < this.$const.NAV_MIN_WIDTH || news > this.$const.NAV_MAX_WIDTH) && this.canChange) {
+      if (
+        (news < this.$const.NAV_MIN_WIDTH ||
+          news > this.$const.NAV_MAX_WIDTH) &&
+        this.canChange
+      ) {
         this.canChange = false;
-      } else if (news > this.$const.NAV_MIN_WIDTH && news < this.$const.NAV_MAX_WIDTH && !this.canChange) {
+      } else if (
+        news > this.$const.NAV_MIN_WIDTH &&
+        news < this.$const.NAV_MAX_WIDTH &&
+        !this.canChange
+      ) {
         this.canChange = true;
       }
     },
@@ -86,16 +92,13 @@ export default {
 
 <style scoped lang="less">
 .main-block {
-  display: flex;
-  flex:1;
-  height: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  .full-screen;
+  .flex-row-center;
   padding-top: 2em;
   box-sizing: border-box;
 }
-a.router-link-exact-active,a:hover{
+a.router-link-exact-active,
+a:hover {
   color: @theme;
 }
 #body-page {
@@ -145,5 +148,4 @@ nav a {
   flex: 1;
   flex-direction: column;
 }
-
 </style>

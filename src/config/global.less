@@ -19,10 +19,25 @@
 @shadow:10px 10px 20px 10px rgba(0, 0, 0, 0.14);
 @shadow-btn:2px 2px 6px 0px rgba(0, 0, 0, 0.15);
 
+.white-bottom-font{
+    color:white;
+    background:@black-mask7;
+}
+.black-bottom-font{
+    color:black;
+    background:#ffffff70;
+}
+
+
 .transform(@value){
     -webkit-transform: @value;
     -ms-transform: @value;
     transform: @value;
+}
+.transition(@value){
+    -webkit-transition: @value;
+    -ms-transition: @value;
+    transition: @value;
 }
 
 /*
@@ -51,20 +66,34 @@
 .flex-row-wrap{
     .flex-row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
+    align-content: baseline;
 }
-.flex-item-1{
-    flex:1 0
-}
+
 /*
     布局有关
 */
+/*全部充满布局*/
+.full-screen{
+    display: block;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+/*宽度自适应布局*/
+.auto-full-width{
+    flex:1;
+    height: 100%;
+    box-sizing: border-box;
+}
+
 /*内容居中 两边留白布局*/
 .content-middle{
     height: 100%;
     width: 90%;
     max-width: 60rem;
     margin: auto;
+    box-sizing: border-box;
 }
 /*头-身-脚布局*/
 .header-body-footer{
@@ -75,14 +104,46 @@
         overflow: scroll;
     }
 }
+.float-center-block{
+    .float-center(90%,70%,70rem,40rem);
+}
+.float-center(@w,@h,@m_w,@m_h){
+  width: @w;
+  max-width: @m_w;
+  height: @h;
+  z-index: 10;
+  max-height: @m_h;
+  box-sizing: content-box;
+}
+/*
+    定位有关
+*/
+/*绝对定位*/
+.absolute{
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
 
 //阴影
 .shadow {
+    box-shadow: @shadow;
+}
+.shadow-btn {
     box-shadow: @shadow-btn;
 }
-
-.height-full{
-    height: 100%;
+//灰线
+.top-gray-line{
+    border-top: 1px solid @gray-line;
+}
+.bottom-gray-line{
+    border-bottom: 1px solid @gray-line;
+}
+.padding2{
+    padding:0.5rem;
+}
+.padding-top2{
+    padding: 0.5rem 0;
 }
 
 /*递归样式*/
